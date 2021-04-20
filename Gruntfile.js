@@ -2,8 +2,12 @@ module.exports = function(grunt) {
     'use strict';
 
     grunt.initConfig({
-        autoprefixer: {
-    
+        autoprefixer: {         
+            dist: {
+               files: {
+                     'deploy/css/main.css': 'source/sass/main.css',
+               },
+            },
         },
     
         copy: {

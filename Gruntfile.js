@@ -11,20 +11,51 @@ module.exports = function(grunt) {
         },
     
         copy: {
+            dist: {
+              files: [
+                  {
+                      expand: true, //habilita o cwd
+                      cwd: 'source/', //relativo à source, mas não a inclui na cópia      
+                      src: 'vendor/*', 
+                      dest: 'deploy/'
+                  },
+                  {
+                      expand: true, //habilita o cwd
+                      cwd: 'source/',
+                      src: 'index.html', 
+                      dest: 'deploy/'}
+              ]        
+            }
+          },
     
-       },
-    
-        clean: {
-    
-        },
+          clean: {
+            dist: {
+              src: ["deploy"]
+            }
+          },
     
         cssmin: {
-    
+            dist: {
+             files: {
+                  'deploy/css/main.css': 'deploy/css/main.css'
+               }
+            }
         },
     
         uglify: {
-    
-        },
+            options: {
+              mangle: true
+            },
+        
+            dist: {
+              files: {
+                'deploy/javascript/app.min.js': [
+                'source/javascript/incrementButton.js', 
+                'source/javascript/date.js'
+                ]
+              }
+            },
+        }
     
     });
 
